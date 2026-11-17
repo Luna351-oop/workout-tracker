@@ -55,7 +55,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 Keep the other values as they are unless you need a different port. Never commit `.env`.
 
-**3. Create the demo users and start the server**
+**3. Create the initial users and start the server**
 
 ```powershell
 npm run seed
@@ -74,18 +74,13 @@ npm run dev
 
 Open the address Vite prints, normally `http://localhost:5173`. The browser sends `/api/...` requests to the Vite dev server, which forwards them to port 3001. If you change `PORT` in `.env`, change the proxy target in `client\vite.config.js` as well.
 
-## Demo logins
+## Seed accounts
 
-There is no registration screen. The two users are created by `npm run seed` from the `SEED_*` values in `server\.env`. With the unchanged `.env.example` values they are:
+There is no registration screen. Initial users are created by `npm run seed` from the `SEED_*` values configured in `server\.env`.
 
-| User | Email | Password |
-|---|---|---|
-| 1 | student@example.com | change-me |
-| 2 | teammate@example.com | change-me-too |
+Do not copy seed credentials into documentation or source control. Configure unique local values before running the seed script. The seed script never changes the password of an existing user.
 
-If you changed the `SEED_*` values in your `.env`, use those instead. These passwords are for local demos only.
-
-The seed script never changes the password of an existing user. To start over, stop the server, delete `server\data\workouts.db` and run `npm run seed` again. This deletes all workouts.
+To start over, stop the server, delete `server\data\workouts.db`, and run `npm run seed` again. This deletes all workout data.
 
 ## Environment variables (`server\.env`)
 
@@ -94,8 +89,8 @@ The seed script never changes the password of an existing user. To start over, s
 | `PORT` | Port the Express server listens on (default 3001) |
 | `JWT_SECRET` | Secret used to sign login tokens (required, the server will not start without it) |
 | `DB_PATH` | Path of the SQLite file, relative to the folder you run commands from |
-| `SEED_EMAIL`, `SEED_PASSWORD` | First demo user |
-| `SEED_EMAIL_2`, `SEED_PASSWORD_2` | Second demo user |
+| `SEED_EMAIL`, `SEED_PASSWORD` | First initial user |
+| `SEED_EMAIL_2`, `SEED_PASSWORD_2` | Second initial user |
 
 ## Scripts
 
@@ -103,7 +98,7 @@ The seed script never changes the password of an existing user. To start over, s
 |---|---|---|
 | `server` | `npm run dev` | Start the API with auto-restart on code changes |
 | `server` | `npm start` | Start the API without auto-restart |
-| `server` | `npm run seed` | Create the two demo users |
+| `server` | `npm run seed` | Create the two initial users |
 | `client` | `npm run dev` | Start the Vite dev server |
 | `client` | `npm run build` | Create a production build in `client\dist` |
 | `client` | `npm run preview` | Preview the production build |
@@ -175,7 +170,7 @@ workout-tracker/
 - The token is stored in the browser's `localStorage`, which any script running on the page can read.
 - The login endpoint has no rate limiting or lockout, and the app does not use HTTPS.
 - Passwords longer than 72 bytes are truncated by bcrypt, so only the first 72 bytes count.
-- The demo passwords are weak on purpose. Always set your own `JWT_SECRET`.
+- Seed credentials are local placeholders. Configure private values for local use and always set your own `JWT_SECRET`.
 
 **Features**
 - There is no pagination, search or filtering. The list loads all of a user's workouts.
