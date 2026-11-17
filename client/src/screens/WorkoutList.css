@@ -1,0 +1,159 @@
+.workout-list {
+  --wl-text: #1a1a1a;
+  --wl-border: #8a8a8a;
+  --wl-row-border: #d0d0d0;
+  --wl-primary: #0b57d0;
+  --wl-primary-dark: #0842a0;
+  --wl-primary-tint: #eef3fd;
+  --wl-danger: #b3261e;
+  --wl-danger-tint: #fdeceb;
+
+  box-sizing: border-box;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  color: var(--wl-text);
+}
+
+.workout-list__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.workout-list__title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.workout-list__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.workout-list__button {
+  box-sizing: border-box;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  color: var(--wl-primary);
+  background: #fff;
+  border: 2px solid var(--wl-primary);
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.workout-list__button:hover {
+  background: var(--wl-primary-tint);
+}
+
+.workout-list__button--primary {
+  color: #fff;
+  background: var(--wl-primary);
+}
+
+.workout-list__button--primary:hover {
+  background: var(--wl-primary-dark);
+}
+
+.workout-list__button--danger {
+  color: var(--wl-danger);
+  border-color: var(--wl-danger);
+}
+
+.workout-list__button--danger:hover {
+  background: var(--wl-danger-tint);
+}
+
+.workout-list__button:focus-visible,
+.workout-list__scroll:focus-visible {
+  outline: 3px solid var(--wl-primary);
+  outline-offset: 2px;
+}
+
+.workout-list__message p {
+  margin: 0 0 1rem;
+}
+
+.workout-list__error {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--wl-danger-tint);
+  border-left: 0.3rem solid var(--wl-danger);
+}
+
+.workout-list__scroll {
+  overflow-x: auto;
+}
+
+.workout-list__table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+}
+
+.workout-list__table th,
+.workout-list__table td {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--wl-row-border);
+}
+
+.workout-list__table td {
+  white-space: nowrap;
+}
+
+.workout-list__table thead th {
+  border-bottom: 2px solid var(--wl-border);
+}
+
+.workout-list__name {
+  font-weight: normal;
+  overflow-wrap: anywhere;
+}
+
+.workout-list__table .workout-list__name {
+  white-space: normal;
+}
+
+.workout-list__row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.workout-list__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 40em) {
+  .workout-list {
+    padding: 2rem;
+  }
+
+  .workout-list__title {
+    font-size: 2rem;
+  }
+
+  .workout-list__table th,
+  .workout-list__table td {
+    padding: 0.75rem 1rem;
+  }
+}
