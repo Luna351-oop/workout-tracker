@@ -1,0 +1,89 @@
+.login {
+  --login-text: #1a1a1a;
+  --login-border: #6b6b6b;
+  --login-primary: #0b57d0;
+  --login-primary-dark: #0842a0;
+  --login-danger: #b3261e;
+  --login-danger-tint: #fdeceb;
+
+  box-sizing: border-box;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  color: var(--login-text);
+}
+
+.login__title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.login__field {
+  margin-bottom: 1rem;
+}
+
+.login__label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.login__input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 2px solid var(--login-border);
+  border-radius: 0.375rem;
+}
+
+.login__button {
+  box-sizing: border-box;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  font: inherit;
+  color: #fff;
+  background: var(--login-primary);
+  border: 2px solid var(--login-primary);
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.login__button:hover:not(:disabled) {
+  background: var(--login-primary-dark);
+}
+
+.login__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login__input:focus-visible,
+.login__button:focus-visible {
+  outline: 3px solid var(--login-primary);
+  outline-offset: 2px;
+}
+
+.login__error {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--login-danger-tint);
+  border-left: 0.3rem solid var(--login-danger);
+}
+
+@media (min-width: 40em) {
+  .login {
+    padding: 2rem;
+  }
+
+  .login__title {
+    font-size: 2rem;
+  }
+}
